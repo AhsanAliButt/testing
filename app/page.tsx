@@ -1,11 +1,8 @@
 import Footer from "@/components/footer";
-import Four from "@/components/Four";
-import Three from "@/components/three";
-import Two from "@/components/two";
+import FourthSection from "@/screens/LandingPage/FourthSection";
 import HeroSection from "@/screens/LandingPage/HeroSection";
 import SecondSection from "@/screens/LandingPage/secondSection";
-import Image from "next/image";
-// import ChatIcon from "./assets/chatIcon.svg";
+import ThirdSection from "@/screens/LandingPage/ThirdSection";
 
 export default function Home() {
   return (
@@ -27,8 +24,8 @@ export default function Home() {
       </button>
       <HeroSection />
       <SecondSection />
-      <Three />
-      <Four />
+      <ThirdSection />
+      <FourthSection />
       <Footer />
     </div>
   );

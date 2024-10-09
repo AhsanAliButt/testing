@@ -16,7 +16,8 @@ interface ParallaxProps {
   baseVelocity: number;
 }
 
-function ParallaxText({ children, baseVelocity = 50 }: ParallaxProps) { // Reduced baseVelocity
+function ParallaxText({ children, baseVelocity = 50 }: ParallaxProps) {
+  // Reduced baseVelocity
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -25,7 +26,9 @@ function ParallaxText({ children, baseVelocity = 50 }: ParallaxProps) { // Reduc
     stiffness: 400,
   });
   // Adjusted transform range to scale down the effect
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 2.5], { clamp: false });
+  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 2.5], {
+    clamp: false,
+  });
 
   const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
 
@@ -55,7 +58,7 @@ function ParallaxText({ children, baseVelocity = 50 }: ParallaxProps) { // Reduc
   );
 }
 
-export default function Three() {
+const ThirdSection = () => {
   return (
     <section className="w-[100%] mt-[7%]">
       {/* @ts-ignore */}
@@ -76,4 +79,6 @@ export default function Three() {
       </ParallaxText>
     </section>
   );
-}
+};
+
+export default ThirdSection;
