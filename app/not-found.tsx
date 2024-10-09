@@ -101,6 +101,7 @@ export default function Custom404() {
           animate={{ y: 0, scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
+          {/* @ts-ignore */}
           <ParallaxText baseVelocity={-5}>
             <div className="flex items-center gap-10 ">
               <p className="text-[90px] md:text-[160px] xxl:text-[228px] font-medium text-black ">
