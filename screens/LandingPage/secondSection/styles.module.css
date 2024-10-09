@@ -1,0 +1,15 @@
+.custom-font-size {
+  font-size: 38px;
+}
+
+@media (min-width: 640px) {
+  .custom-font-size {
+    font-size: 80px; /* For medium screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .custom-font-size {
+    font-size: 98px; /* For large screens */
+  }
+}

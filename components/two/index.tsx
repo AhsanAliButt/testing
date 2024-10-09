@@ -66,20 +66,6 @@ function Two() {
           />
         </p>
       </div>
-      {/* <div className="md:px-[5%] xl:px-[15%] px-[5%] flex items-center justify-center flex-wrap gap-5 m-auto mt-[46px] md:mt-[80px]"> */}
-      {/* {displayedData?.map((item: any, index: number) => {
-          return (
-            <Button
-              key={index}
-              onClick={() => onSelectHandle(index)}
-              className={`text-[14px] md:text-[15px]  xl:text-[18px] text-black font-gustavo-reg px-[16px] md:px-[20px] h-[37px] md:h-[52px] rounded-[72px] ${
-                active === index ? "bg-green" : "border border-black"
-              }`}
-            >
-              {item?.title}
-            </Button>
-          );
-        })} */}
       <motion.div
         className="md:px-[5%] xl:px-[15%] px-[5%] flex items-center justify-center flex-wrap gap-5 m-auto mt-[46px] md:mt-[80px]"
         variants={containerVariants}

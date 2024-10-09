@@ -4,6 +4,8 @@ import AnimatedText from "@/lib/AnimatedText";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/button/Button";
 import { secondSection } from "@/lib/data";
+import "./styles.module.css"; // Adjust the path as necessary
+
 const SecondSection = () => {
   const [active, setActive] = useState<number>();
   const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
@@ -55,32 +57,58 @@ const SecondSection = () => {
       },
     }),
   };
+  // Variants for bottom to top animations
+  const textVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 2, ease: "easeOut" },
+    },
+  };
+
   return (
     <div className="w-full mt-[5%]">
       <div className="m-auto">
-        <p>
-          <AnimatedText
-            text={
-              "Tú indicas el <br /> problema, nosotros te <br /> damos la solución"
-            }
-            className="text-[44px] md:text-[80px] xl:text-[98px] flex items-center justify-center leading-[50px] md:leading-[100px]"
-          />
-        </p>
-      </div>
-      {/* <div className="md:px-[5%] xl:px-[15%] px-[5%] flex items-center justify-center flex-wrap gap-5 m-auto mt-[46px] md:mt-[80px]"> */}
-      {/* {displayedData?.map((item: any, index: number) => {
-          return (
-            <Button
-              key={index}
-              onClick={() => onSelectHandle(index)}
-              className={`text-[14px] md:text-[15px]  xl:text-[18px] text-black font-gustavo-reg px-[16px] md:px-[20px] h-[37px] md:h-[52px] rounded-[72px] ${
-                active === index ? "bg-green" : "border border-black"
-              }`}
+        <div className="flex flex-col items-center">
+          <div>
+            <motion.p
+              className="text-[44px] md:text-[80px] xl:text-[98px] flex items-center justify-center leading-[50px] md:leading-[100px]"
+              variants={textVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.5 }} // Animation triggers when 50% of the element is in view
+              transition={{ delay: 0.3 }} // Delay for the first title
             >
-              {item?.title}
-            </Button>
-          );
-        })} */}
+              Tú indicas el
+            </motion.p>
+          </div>
+          <div>
+            <motion.p
+              className=" text-[44px] md:text-[80px] xl:text-[98px] flex items-center justify-center leading-[50px] md:leading-[100px]"
+              variants={textVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.5 }} // Animation triggers when 50% of the element is in view
+              transition={{ delay: 0.4 }} // Delay for the second title
+            >
+              problema, nosotros te
+            </motion.p>
+          </div>
+          <div>
+            <motion.p
+              className="text-[44px] md:text-[80px] xl:text-[98px] flex items-center justify-center leading-[50px] md:leading-[100px]"
+              variants={textVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.5 }} // Animation triggers when 50% of the element is in view
+              transition={{ delay: 0.5 }} // Delay for the third title
+            >
+              damos la solución
+            </motion.p>
+          </div>
+        </div>
+      </div>
       <motion.div
         className="md:px-[5%] xl:px-[15%] px-[5%] flex items-center justify-center flex-wrap gap-5 m-auto mt-[46px] md:mt-[80px]"
         variants={containerVariants}

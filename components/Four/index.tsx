@@ -48,7 +48,7 @@ const AnimatedCardGrid = () => {
           initial="initial"
           whileInView="animate"
           custom={index}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: false, amount: 0.2 }}
         >
           <Card
             title={item?.title}

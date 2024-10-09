@@ -3,6 +3,7 @@ import React from "react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
+// Motion variants
 const quote = {
   initial: {
     opacity: 1,
@@ -26,7 +27,7 @@ const singelWord = (index: number) => ({
     y: 0,
     transition: {
       duration: 1,
-      delay: index * 0.15, // Add delay based on the word index
+      delay: index * 0.15,
     },
   },
 });
@@ -39,32 +40,32 @@ const AnimatedText = ({
   className: string;
 }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false }); // Set 'once' to false to trigger animations every time
+  const isInView = useInView(ref, { once: false });
 
-  // Split the text into lines based on <br />
+  // Split the text into lines
   const lines = text.split(/<br\s*\/?>/);
 
   return (
     <div className={`sm:py-0 w-full flex items-center text-start`} ref={ref}>
       <motion.h1
-        className={`inline-flex w-full text-dark font-bold flex-wrap capitalize text-8xl dark:text-light ${className}`}
+        className={`inline-flex w-full flex-wrap ${className}`} // Ensuring the custom font is applied
         variants={quote}
         initial="initial"
-        animate={isInView ? "animate" : "initial"} // Animate when in view
+        animate={isInView ? "animate" : "initial"}
       >
         {lines.map((line, lineIndex) => (
           <div key={lineIndex} className="flex">
             {line.split(" ").map((word, wordIndex) => (
               <motion.span
                 key={word + "-" + wordIndex}
-                variants={singelWord(wordIndex)} // Pass index to create a unique variant
+                variants={singelWord(wordIndex)}
                 initial="initial"
-                animate={isInView ? "animate" : "initial"} // Animate each word when in view
+                animate={isInView ? "animate" : "initial"}
+                className={`font-gustavo-reg`} // Ensure font is explicitly applied here
               >
                 {word}&nbsp;
               </motion.span>
             ))}
-            {/* Add a line break after each line except the last one */}
             {lineIndex < lines.length - 1 && <br />}
           </div>
         ))}
