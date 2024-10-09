@@ -1,4 +1,4 @@
-export const data: any = [
+export const secondSection: any = [
   { title: "Elaborar pliegos" },
   { title: "Fin de contrato de prestación de servicios" },
   { title: "Elaborar el PBL" },

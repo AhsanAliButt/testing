@@ -1,10 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { data } from "./data";
-import Button from "../ui/button/Button";
 import AnimatedText from "@/lib/AnimatedText";
 import { motion } from "framer-motion";
-function Two() {
+import Button from "@/components/ui/button/Button";
+import { secondSection } from "@/lib/data";
+const SecondSection = () => {
   const [active, setActive] = useState<number>();
   const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
   const [showAll, setShowAll] = useState<boolean>(false);
@@ -26,7 +26,8 @@ function Two() {
     setActive(index);
   };
 
-  const displayedData = isSmallScreen && !showAll ? data.slice(0, 6) : data;
+  const displayedData =
+    isSmallScreen && !showAll ? secondSection.slice(0, 6) : secondSection;
   const containerVariants = {
     initial: {
       opacity: 1,
@@ -110,7 +111,7 @@ function Two() {
       </motion.div>
       {/* </div> */}
       <div className="flex items-center justify-center mt-[36px]">
-        {isSmallScreen && !showAll && data.length > 6 && (
+        {isSmallScreen && !showAll && secondSection.length > 6 && (
           <Button
             onClick={() => setShowAll(true)}
             className="text-[12px] text-black font-gustavo-reg gap-[8px]"
@@ -122,6 +123,6 @@ function Two() {
       </div>
     </div>
   );
-}
+};
 
-export default Two;
+export default SecondSection;
