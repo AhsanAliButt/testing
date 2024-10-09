@@ -62,6 +62,46 @@ function ParallaxText({ children, baseVelocity = 50 }: ParallaxProps) {
 }
 
 export default function Custom404() {
+  // Animation Variants for different elements
+  const logoVariants = {
+    hidden: { y: -50, opacity: 0, willChange: "transform, opacity" },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const navVariants = {
+    hidden: { x: -50, y: -50, opacity: 0 },
+    visible: {
+      x: 0,
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.7,
+        ease: "easeOut",
+        delay: 0.3,
+      },
+    },
+  };
+
+  const ctaVariants = {
+    hidden: { y: -50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+        delay: 0.6,
+      },
+    },
+  };
+
   return (
     <div className="w-[100%] overflow-hidden">
       <button className="bg-green w-[80px] h-[80px] rounded-full flex items-center justify-center fixed right-5 bottom-5 z-50">
@@ -79,22 +119,21 @@ export default function Custom404() {
           />
         </svg>
       </button>
-      <NavigationBar blackLogo={false} />
+
+      {/* Navigation Bar with animation */}
+      <motion.div initial="hidden" animate="visible" variants={navVariants}>
+        <NavigationBar blackLogo={false} />
+      </motion.div>
 
       <div className="w-full h-[70vh] flex flex-col items-center justify-center gap-10">
         {/* Image coming from top to bottom with color change */}
         <motion.img
           src={"./thy.svg"}
           alt="Loading..."
-          className="md:w-[140px] md:h-[140px]  xxl:w-[239px] xxl:h-[239px] absolute top-[23vh] xxl:top-[17vh] left-[15%] z-50 hidden min-[1050px]:block"
-          initial={{ y: -300, scale: 0.5, opacity: 0, backgroundColor: "red" }}
-          animate={{
-            y: 0,
-            scale: 1,
-            opacity: 1,
-            backgroundColor: "transparent",
-          }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="md:w-[140px] md:h-[140px] xxl:w-[239px] xxl:h-[239px] absolute top-[23vh] xxl:top-[17vh] left-[15%] z-50 hidden min-[1050px]:block"
+          initial="hidden"
+          animate="visible"
+          variants={logoVariants}
         />
         <motion.div
           initial={{ y: 300, scale: 0.5, opacity: 0 }}
@@ -103,11 +142,11 @@ export default function Custom404() {
         >
           {/* @ts-ignore */}
           <ParallaxText baseVelocity={-5}>
-            <div className="flex items-center gap-10 ">
-              <p className="text-[90px] md:text-[160px] xxl:text-[228px] font-medium text-black ">
+            <div className="flex items-center gap-10">
+              <p className="text-[90px] md:text-[160px] xxl:text-[228px] font-medium text-black">
                 No encontrada
               </p>
-              <div className="rounded-[72px] border border-black flex items-center justify-center w-[101px]  md:w-[113px] xxl:w-[128px] xxl:h-[52px] h-[37px] md:h-[46px]">
+              <div className="rounded-[72px] border border-black flex items-center justify-center w-[101px] md:w-[113px] xxl:w-[128px] xxl:h-[52px] h-[37px] md:h-[46px]">
                 <p className="text-[15px] text-black font-regular leading-2 tracking-normal font-gustavo-reg">
                   ERROR 404
                 </p>
@@ -118,29 +157,32 @@ export default function Custom404() {
             </div>
           </ParallaxText>
         </motion.div>
-        <Link href={"/"}>
-          <button className="flex items-center text-sm text-black font-gustavo-reg gap-2 ">
-            <div className="w-[14px] aspect-square rounded-full bg-green"></div>
-            VOLVER A LA HOME
-            <img
-              src="/long-arrow.svg"
-              alt="Loading..."
-              className="w-[27px] h-[11px] "
-            />
-          </button>
-        </Link>
+
+        {/* CTA Button */}
+        <motion.div initial="hidden" animate="visible" variants={ctaVariants}>
+          <Link href={"/"}>
+            <button className="flex items-center text-sm text-black font-gustavo-reg gap-2">
+              <div className="w-[14px] aspect-square rounded-full bg-green"></div>
+              VOLVER A LA HOME
+              <img
+                src="/long-arrow.svg"
+                alt="Loading..."
+                className="w-[27px] h-[11px]"
+              />
+            </button>
+          </Link>
+        </motion.div>
 
         {/* Image coming from bottom to top */}
         <motion.img
           src={"./floor.svg"}
           alt="Loading..."
-          className="w-[140px] h-[140px]  xxl:w-[239px] xxl:h-[239px] absolute bottom-[22vh] xxl:bottom-[27vh] right-[20%] z-50 hidden min-[1050px]:block"
+          className="w-[140px] h-[140px] xxl:w-[239px] xxl:h-[239px] absolute bottom-[22vh] xxl:bottom-[27vh] right-[20%] z-50 hidden min-[1050px]:block"
           initial={{ y: 300, scale: 0.5, opacity: 0 }}
           animate={{ y: 0, scale: 1, opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+          transition={{ duration: 1.5, ease: "easeOut", delay: 1 }}
         />
       </div>
-
       <Footer />
     </div>
   );
