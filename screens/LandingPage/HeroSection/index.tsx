@@ -106,17 +106,25 @@ const HeroSection = () => {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col justify-between relative">
+            <div className="flex flex-col justify-between relative items-baseline">
               {/* Show the "Play" button only when hovering over the first button */}
-
               <button className="hidden min-[1200px]:block px-[52px] py-[22px] xxl:py-[34px] bg-transparent rounded-full mr-[90px]">
                 {/* <img src="arrow-right-white.svg" alt="" /> */}
               </button>
+
               {hoveredButtonIndex !== null && (
-                <button className="hidden min-[1200px]:block px-[52px] py-[15px] xxl:py-[30px] text-[22px] mt-48 border-2 border-white bg-transparent rounded-[72px] transition-opacity duration-300">
+                <button
+                  className="hidden min-[1200px]:block px-[52px] py-[15px] xxl:py-[30px] text-[22px] border-2 border-white bg-transparent rounded-[72px] transition-opacity duration-300"
+                  style={{
+                    position: "absolute", // Absolute positioning
+                    top: "50%", // Center vertically
+                    transform: "translateY(-50%)", // Adjust for centering
+                  }}
+                >
                   Play
                 </button>
               )}
+
               <div className="min-[1200px]:ml-auto font-gustavo-reg flex items-center gap-1">
                 {[1, 2, 3, 4].map((number, index) => (
                   <div

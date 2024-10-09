@@ -73,7 +73,7 @@ const SecondSection = () => {
         <div className="flex flex-col items-center">
           <div>
             <motion.p
-              className="text-[44px] md:text-[80px] xl:text-[98px] flex items-center justify-center leading-[50px] md:leading-[100px]"
+              className="text-[38px] md:text-[80px] xl:text-[98px] flex items-center justify-center leading-[50px] md:leading-[100px]"
               variants={textVariants}
               initial="hidden"
               whileInView="visible"
@@ -85,7 +85,7 @@ const SecondSection = () => {
           </div>
           <div>
             <motion.p
-              className=" text-[44px] md:text-[80px] xl:text-[98px] flex items-center justify-center leading-[50px] md:leading-[100px]"
+              className=" text-[36px] md:text-[80px] xl:text-[98px] flex items-center justify-center leading-[50px] md:leading-[100px]"
               variants={textVariants}
               initial="hidden"
               whileInView="visible"
@@ -97,7 +97,7 @@ const SecondSection = () => {
           </div>
           <div>
             <motion.p
-              className="text-[44px] md:text-[80px] xl:text-[98px] flex items-center justify-center leading-[50px] md:leading-[100px]"
+              className="text-[38px] md:text-[80px] xl:text-[98px] flex items-center justify-center leading-[50px] md:leading-[100px]"
               variants={textVariants}
               initial="hidden"
               whileInView="visible"

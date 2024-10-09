@@ -82,10 +82,11 @@ export default function Custom404() {
       <div className="w-full h-[70vh] flex flex-col items-center justify-center gap-10">
         {/* Image coming from top to bottom with color change */}
         <motion.img
+          layoutId="top-to-bottom-image"
           src={"./thy.svg"}
           alt="Loading..."
           className="md:w-[140px] md:h-[140px]  xxl:w-[239px] xxl:h-[239px] absolute top-[23vh] xxl:top-[17vh] left-[15%] z-50 hidden min-[1050px]:block"
-          initial={{ y: -300, scale: 0.5, opacity: 0, backgroundColor: "red" }}
+          initial={{ y: -200, scale: 0.5, opacity: 0, backgroundColor: "red" }}
           animate={{
             y: 0,
             scale: 1,
@@ -95,7 +96,7 @@ export default function Custom404() {
           transition={{ duration: 1.5, ease: "easeOut" }}
         />
         <motion.div
-          initial={{ y: 300, scale: 0.5, opacity: 0 }}
+          initial={{ y: 200, scale: 0.5, opacity: 0 }}
           animate={{ y: 0, scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
