@@ -20,19 +20,20 @@ export function MenuSheet() {
         </Button>
       </SheetTrigger>
       <SheetContent>
-        <SheetFooter className=" mt-6">
-          <SheetClose asChild className=" my-4">
-            <Link href="/" passHref className=" border-2 rounded-lg">
+        <div className="border-2 rounded-md mt-6 mb-2">
+          <SheetClose asChild>
+            <Link href="/" passHref>
               <Button>Home</Button> {/* Redirect to home page */}
             </Link>
           </SheetClose>
-
+        </div>
+        <div className="border-2 rounded-md">
           <SheetClose asChild>
-            <Link href="/docs" passHref className="border-2 rounded-lg">
-              <Button>404</Button> {/* Redirect to home page */}
+            <Link href="/docs" passHref>
+              <Button>404</Button> {/* Redirect to Error page */}
             </Link>
           </SheetClose>
-        </SheetFooter>
+        </div>
       </SheetContent>
     </Sheet>
   );

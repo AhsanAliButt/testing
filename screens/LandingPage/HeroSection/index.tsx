@@ -125,7 +125,7 @@ const HeroSection = () => {
                 </button>
               )}
 
-              <div className="min-[1200px]:ml-auto font-gustavo-reg flex items-center gap-1 self-baseline">
+              <div className="min-[1200px]:ml-auto font-gustavo-reg flex items-center gap-1">
                 {[1, 2, 3, 4].map((number, index) => (
                   <div
                     key={number}
