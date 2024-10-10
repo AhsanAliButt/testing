@@ -21,9 +21,16 @@ export function MenuSheet() {
       </SheetTrigger>
       <SheetContent>
         <SheetFooter>
-          <Link href="/" passHref>
-            <Button>Home</Button> {/* Redirect to home page */}
-          </Link>
+          <SheetClose asChild>
+            <Link href="/" passHref>
+              <Button>Home</Button> {/* Redirect to home page */}
+            </Link>
+          </SheetClose>
+          <SheetClose asChild>
+            <Link href="/docs" passHref>
+              <Button>404</Button> {/* Redirect to home page */}
+            </Link>
+          </SheetClose>
         </SheetFooter>
       </SheetContent>
     </Sheet>
