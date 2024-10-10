@@ -59,7 +59,7 @@ function ParallaxText({ children, baseVelocity = 50 }: ParallaxProps) {
   );
 }
 
-export default function Custom404() {
+const page = () => {
   return (
     <div className="w-[100%] overflow-hidden">
       <button className="bg-green w-[80px] h-[80px] rounded-full flex items-center justify-center fixed right-5 bottom-5 z-50">
@@ -82,7 +82,6 @@ export default function Custom404() {
       <div className="w-full h-[70vh] flex flex-col items-center justify-center gap-10">
         {/* Image coming from top to bottom with color change */}
         <motion.img
-          layoutId="top-to-bottom-image"
           src={"./thy.svg"}
           alt="Loading..."
           className="md:w-[140px] md:h-[140px]  xxl:w-[239px] xxl:h-[239px] absolute top-[23vh] xxl:top-[17vh] left-[15%] z-50 hidden min-[1050px]:block"
@@ -143,4 +142,6 @@ export default function Custom404() {
       <Footer />
     </div>
   );
-}
+};
+
+export default page;

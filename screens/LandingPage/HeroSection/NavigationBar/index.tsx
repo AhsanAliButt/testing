@@ -95,7 +95,7 @@ function NavigationBar(props: any) {
         initial="hidden"
         animate="visible"
         variants={ctaVariants}
-        className="px-1 bg-white hidden rounded-full max-[1050px]:block"
+        className="px-1 bg-white hidden rounded-full max-[1024px]:block"
       >
         {/* <img src="menu.svg" alt="" /> */}
         <MenuSheet />

@@ -70,7 +70,7 @@ const HeroSection = () => {
 
         {/* Bottom Content */}
         <div className="text-white">
-          <div className="flex flex-col items-center gap-16 min-[1200px]:gap-0 min-[1200px]:items-stretch min-[1200px]:flex-row justify-between px-[60px] mb-9">
+          <div className="flex flex-col items-center gap-16 min-[1200px]:gap-0 min-[1200px]:items-stretch min-[1024px]:flex-row justify-between px-[60px] mb-9">
             <div>
               <div className="flex items-center space-x-4">
                 {/* Welcome Text */}
@@ -106,7 +106,7 @@ const HeroSection = () => {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col justify-between relative items-baseline">
+            <div className="flex flex-col justify-between relative items-baseline self-end">
               {/* Show the "Play" button only when hovering over the first button */}
               <button className="hidden min-[1200px]:block px-[52px] py-[22px] xxl:py-[34px] bg-transparent rounded-full mr-[90px]">
                 {/* <img src="arrow-right-white.svg" alt="" /> */}
@@ -125,7 +125,7 @@ const HeroSection = () => {
                 </button>
               )}
 
-              <div className="min-[1200px]:ml-auto font-gustavo-reg flex items-center gap-1">
+              <div className="min-[1200px]:ml-auto font-gustavo-reg flex items-center gap-1 self-baseline">
                 {[1, 2, 3, 4].map((number, index) => (
                   <div
                     key={number}
