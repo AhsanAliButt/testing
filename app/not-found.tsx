@@ -1,3 +1,5 @@
+//
+
 "use client";
 import { useRef } from "react";
 import {
@@ -13,6 +15,7 @@ import { wrap } from "@motionone/utils";
 import Footer from "@/components/footer";
 import Link from "next/link";
 import NavigationBar from "@/screens/LandingPage/HeroSection/NavigationBar";
+import Image from "next/image";
 
 interface ParallaxProps {
   children: string;
@@ -23,9 +26,10 @@ function ParallaxText({ children, baseVelocity = 50 }: ParallaxProps) {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
+
   const smoothVelocity = useSpring(scrollVelocity, {
-    damping: 50,
-    stiffness: 400,
+    damping: 60,
+    stiffness: 300,
   });
   const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 2.5], {
     clamp: false,
@@ -34,6 +38,7 @@ function ParallaxText({ children, baseVelocity = 50 }: ParallaxProps) {
   const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
 
   const directionFactor = useRef<number>(1);
+
   useAnimationFrame((t, delta) => {
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
@@ -44,7 +49,9 @@ function ParallaxText({ children, baseVelocity = 50 }: ParallaxProps) {
     }
 
     moveBy += directionFactor.current * moveBy * velocityFactor.get();
-    baseX.set(baseX.get() + moveBy);
+
+    const nextValue = baseX.get() + moveBy;
+    baseX.set(Math.min(Math.max(nextValue, -100), 100));
   });
 
   return (
@@ -60,6 +67,23 @@ function ParallaxText({ children, baseVelocity = 50 }: ParallaxProps) {
 }
 
 export default function Custom404() {
+  // Image variants with smoother transitions
+  const imageVariants = {
+    hidden: {
+      opacity: 0,
+      transform: "translateY(-50px)",
+      willChange: "transform, opacity",
+    },
+    visible: {
+      opacity: 1,
+      transform: "translateY(0)",
+      transition: {
+        duration: 1,
+        ease: [0.42, 0, 0.58, 1],
+      },
+    },
+  };
+
   return (
     <div className="w-[100%] overflow-hidden">
       <button className="bg-green w-[80px] h-[80px] rounded-full flex items-center justify-center fixed right-5 bottom-5 z-50">
@@ -77,36 +101,32 @@ export default function Custom404() {
           />
         </svg>
       </button>
+
       <NavigationBar blackLogo={false} />
 
       <div className="w-full h-[70vh] flex flex-col items-center justify-center gap-10">
-        {/* Image coming from top to bottom with color change */}
-        <motion.img
-          layoutId="top-to-bottom-image"
-          src={"./thy.svg"}
-          alt="Loading..."
-          className="md:w-[140px] md:h-[140px]  xxl:w-[239px] xxl:h-[239px] absolute top-[23vh] xxl:top-[17vh] left-[15%] z-50 hidden min-[1050px]:block"
-          initial={{ y: -200, scale: 0.5, opacity: 0, backgroundColor: "red" }}
-          animate={{
-            y: 0,
-            scale: 1,
-            opacity: 1,
-            backgroundColor: "transparent",
-          }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        />
+        {/* Image coming from top to bottom */}
+        <motion.div initial="hidden" animate="visible" variants={imageVariants}>
+          <Image
+            src={"./thy.svg"}
+            alt="Loading..."
+            width={140}
+            height={140}
+            className="absolute top-[23vh] left-[15%] z-50 hidden min-[1050px]:block"
+          />
+        </motion.div>
+
         <motion.div
           initial={{ y: 200, scale: 0.5, opacity: 0 }}
           animate={{ y: 0, scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
-          {/* @ts-ignore */}
           <ParallaxText baseVelocity={-5}>
-            <div className="flex items-center gap-10 ">
-              <p className="text-[90px] md:text-[160px] xxl:text-[228px] font-medium text-black ">
+            <div className="flex items-center gap-10">
+              <p className="text-[90px] md:text-[160px] xxl:text-[228px] font-medium text-black">
                 No encontrada
               </p>
-              <div className="rounded-[72px] border border-black flex items-center justify-center w-[101px]  md:w-[113px] xxl:w-[128px] xxl:h-[52px] h-[37px] md:h-[46px]">
+              <div className="rounded-[72px] border border-black flex items-center justify-center w-[101px] md:w-[113px] xxl:w-[128px] xxl:h-[52px] h-[37px] md:h-[46px]">
                 <p className="text-[15px] text-black font-regular leading-2 tracking-normal font-gustavo-reg">
                   ERROR 404
                 </p>
@@ -117,27 +137,29 @@ export default function Custom404() {
             </div>
           </ParallaxText>
         </motion.div>
-        <Link href={"/"}>
-          <button className="flex items-center text-sm text-black font-gustavo-reg gap-2 ">
+
+        <Link href="/">
+          <button className="flex items-center text-sm text-black font-gustavo-reg gap-2">
             <div className="w-[14px] aspect-square rounded-full bg-green"></div>
             VOLVER A LA HOME
             <img
               src="/long-arrow.svg"
               alt="Loading..."
-              className="w-[27px] h-[11px] "
+              className="w-[27px] h-[11px]"
             />
           </button>
         </Link>
 
         {/* Image coming from bottom to top */}
-        <motion.img
-          src={"./floor.svg"}
-          alt="Loading..."
-          className="w-[140px] h-[140px]  xxl:w-[239px] xxl:h-[239px] absolute bottom-[22vh] xxl:bottom-[27vh] right-[20%] z-50 hidden min-[1050px]:block"
-          initial={{ y: 300, scale: 0.5, opacity: 0 }}
-          animate={{ y: 0, scale: 1, opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        />
+        <motion.div initial="hidden" animate="visible" variants={imageVariants}>
+          <Image
+            src={"./floor.svg"}
+            alt="Loading..."
+            width={140}
+            height={140}
+            className="absolute bottom-[22vh] right-[20%] z-50 hidden min-[1050px]:block"
+          />
+        </motion.div>
       </div>
 
       <Footer />
