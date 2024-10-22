@@ -1,5 +1,4 @@
 "use client";
-
 import * as React from "react";
 import Link from "next/link";
 
@@ -87,13 +86,3 @@ const ListItem = React.forwardRef<
   );
 });
 ListItem.displayName = "ListItem";
-
-{
-  /* <p className="flex gap-1 items-center cursor-pointer">
-            <span>Soluciones</span> <img src="/angle-down.svg" alt="" />
-          </p>
-          <p className="cursor-pointer">proyectos</p>
-          <p className="cursor-pointer">noticias</p>
-          <p className="cursor-pointer">hublidera</p>
-          <p className="cursor-pointer">nosotros</p> */
-}

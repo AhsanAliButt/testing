@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-function Footer() {
+const Footer = () => {
   return (
     <div className="bg-green w-[100%] mt-[10%] h-auto  md:h-[100vh] xxl:h-[950px]">
       <div className="w-full flex items-start justify-center border-b border-black">
@@ -81,6 +81,6 @@ function Footer() {
       </div>
     </div>
   );
-}
+};
 
 export default Footer;

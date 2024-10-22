@@ -5,7 +5,7 @@ import { NavigationMenuDemo } from "../tabs";
 import { motion } from "framer-motion";
 import { MenuSheet } from "@/components/MenuButton";
 
-function NavigationBar(props: any) {
+const NavigationBar = (props: any) => {
   let blackLogo = props.blackLogo;
 
   // Animation variants for logo, nav, and CTA
@@ -102,6 +102,6 @@ function NavigationBar(props: any) {
       </motion.button>
     </div>
   );
-}
+};
 
 export default NavigationBar;

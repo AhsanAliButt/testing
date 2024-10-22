@@ -25,7 +25,6 @@ function ParallaxText({ children, baseVelocity = 50 }: ParallaxProps) {
     damping: 50,
     stiffness: 400,
   });
-  // Adjusted transform range to scale down the effect
   const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 2.5], {
     clamp: false,
   });

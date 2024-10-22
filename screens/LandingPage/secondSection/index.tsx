@@ -4,7 +4,7 @@ import AnimatedText from "@/lib/AnimatedText";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/button/Button";
 import { secondSection } from "@/lib/data";
-import "./styles.module.css"; // Adjust the path as necessary
+import "./styles.module.css";
 
 const SecondSection = () => {
   const [active, setActive] = useState<number>();
@@ -14,13 +14,10 @@ const SecondSection = () => {
   // Handle screen size detection
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= 640); // sm screen and below
+      setIsSmallScreen(window.innerWidth <= 640);
     };
-    // Set initial value
     handleResize();
-    // Add resize event listener
     window.addEventListener("resize", handleResize);
-    // Clean up event listener
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -57,7 +54,7 @@ const SecondSection = () => {
       },
     }),
   };
-  // Variants for bottom to top animations
+
   const textVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -77,8 +74,8 @@ const SecondSection = () => {
               variants={textVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.5 }} // Animation triggers when 50% of the element is in view
-              transition={{ delay: 0.3 }} // Delay for the first title
+              viewport={{ once: false, amount: 0.5 }}
+              transition={{ delay: 0.3 }}
             >
               Tú indicas el
             </motion.p>
@@ -89,8 +86,8 @@ const SecondSection = () => {
               variants={textVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.5 }} // Animation triggers when 50% of the element is in view
-              transition={{ delay: 0.4 }} // Delay for the second title
+              viewport={{ once: false, amount: 0.5 }}
+              transition={{ delay: 0.4 }}
             >
               problema, nosotros te
             </motion.p>
@@ -101,8 +98,8 @@ const SecondSection = () => {
               variants={textVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.5 }} // Animation triggers when 50% of the element is in view
-              transition={{ delay: 0.5 }} // Delay for the third title
+              viewport={{ once: false, amount: 0.5 }}
+              transition={{ delay: 0.5 }}
             >
               damos la solución
             </motion.p>

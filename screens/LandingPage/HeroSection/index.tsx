@@ -7,9 +7,8 @@ const HeroSection = () => {
   const [activeButtonIndex, setActiveButtonIndex] = useState(0); // Track active button index
   const [hoveredButtonIndex, setHoveredButtonIndex] = useState<number | null>(
     null
-  ); // Track hover state for each button
+  );
 
-  // Variants for bottom to top animations
   const textVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -18,8 +17,6 @@ const HeroSection = () => {
       transition: { duration: 2, ease: "easeOut" },
     },
   };
-
-  // Variants for left to right animation
   const leftToRightVariants = {
     hidden: { opacity: 0, x: -100 },
     visible: {
@@ -45,7 +42,6 @@ const HeroSection = () => {
     }),
   };
 
-  // Handler for button click
   const handleButtonClick = (index: number) => {
     setActiveButtonIndex(index);
   };
@@ -105,12 +101,8 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* Action Buttons */}
             <div className="flex flex-col justify-between relative items-baseline self-end">
-              {/* Show the "Play" button only when hovering over the first button */}
-              <button className="hidden min-[1200px]:block px-[52px] py-[22px] xxl:py-[34px] bg-transparent rounded-full mr-[90px]">
-                {/* <img src="arrow-right-white.svg" alt="" /> */}
-              </button>
+              <button className="hidden min-[1200px]:block px-[52px] py-[22px] xxl:py-[34px] bg-transparent rounded-full mr-[90px]"></button>
 
               {hoveredButtonIndex !== null && (
                 <button
@@ -130,8 +122,8 @@ const HeroSection = () => {
                   <div
                     key={number}
                     className="relative flex items-center cursor-pointer"
-                    onMouseEnter={() => setHoveredButtonIndex(index)} // Set hovered index
-                    onMouseLeave={() => setHoveredButtonIndex(null)} // Reset hover on leave
+                    onMouseEnter={() => setHoveredButtonIndex(index)}
+                    onMouseLeave={() => setHoveredButtonIndex(null)}
                   >
                     {number}
                     {index !== 3 ? <img src="/line-gray.svg" alt="" /> : ""}
@@ -153,7 +145,6 @@ const HeroSection = () => {
             </motion.p>
             <div className="flex gap-3">
               {[
-                // Button options
                 {
                   text: "Fin de contrato de prestación de servicios",
                   active: true,
